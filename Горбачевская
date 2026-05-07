@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template.ru — Просмотр, верстка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e8eef4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px 20px;
+            color: #1a1a2e;
+        }
+
+        /* Основной блок — как на скриншоте */
+        .card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            padding: 32px 40px;
+        }
+
+        /* Верхняя строка с Template.ru и датой */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .template-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #0f172a;
+        }
+
+        /* Строка "Просмотр, верстка" и дата */
+        .sub-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #334155;
+            border-bottom: 1px dashed #cbd5e1;
+            padding-bottom: 8px;
+        }
+
+        .verstka {
+            font-weight: 500;
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .date {
+            color: #64748b;
+        }
+
+        /* Основной текст, который будет набран */
+        .main-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #0f172a;
+            margin-bottom: 32px;
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-radius: 16px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        /* Заголовки 1,2 и 3,4 — как на скриншоте (два ряда) */
+        .headers-row {
+            display: flex;
+            gap: 48px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 20px;
+        }
+
+        .headers-col {
+            flex: 1;
+        }
+
+        .headers-col h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .headers-col p {
+            font-size: 20px;
+            font-weight: 500;
+            color: #334155;
+        }
+
+        /* Секция с вопросами и объявлениями */
+        .questions-section {
+            margin: 32px 0;
+        }
+
+        .question-block {
+            margin-bottom: 28px;
+            padding: 16px 0;
+            border-bottom: 1px solid #eef2ff;
+        }
+
+        .question-label {
+            font-weight: 700;
+            font-size: 18px;
+            color: #1e293b;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .question-label::before {
+            content: "▍";
+            color: #3b82f6;
+            font-size: 20px;
+        }
+
+        .answer-text {
+            color: #334155;
+            line-height: 1.5;
+            background: #fefce8;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 15px;
+            margin-top: 8px;
+            border: 1px solid #fef08a;
+        }
+
+        /* Блок с объявлениями/правилами — создаём 6-8 объявлений, как просили */
+        .announcements-title {
+            font-weight: 700;
+            font-size: 20px;
+            margin: 32px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #cbd5e1;
+            display: inline-block;
+        }
+
+        .announcements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin: 20px 0 32px;
+        }
+
+        .announce-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 16px 18px;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        .announce-card:hover {
+            border-color: #94a3b8;
+            background: #fefce8;
+        }
+
+        .announce-num {
+            font-size: 13px;
+            color: #3b82f6;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .announce-text {
+            font-size: 15px;
+            line-height: 1.4;
+            color: #1e293b;
+        }
+
+        .note {
+            background: #f1f5f9;
+            padding: 16px;
+            border-radius: 16px;
+            margin-top: 24px;
+            font-size: 14px;
+            border-left: 4px solid #64748b;
+            color: #334155;
+        }
+
+        hr {
+            margin: 24px 0;
+            border: none;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        @media (max-width: 650px) {
+            .card {
+                padding: 20px;
+            }
+            .headers-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- Верхняя часть: Template.ru и дата справа -->
+        <div class="top-bar">
+            <span class="template-name"># Template.ru</span>
+            <span>**18.01.2023 - Апрель 2023**</span>
+        </div>
+
+        <!-- Строка просмотр, верстка -->
+        <div class="sub-line">
+            <span class="verstka">## Просмотр, верстка</span>
+            <span class="date">**18.01.2023 - Апрель 2023**</span>
+        </div>
+
+        <!-- Текст, который будет набран Вами и опубликован -->
+        <div class="main-text">
+            ### Текст, который будет набран Вами и опубликован.
+        </div>
+
+        <!-- Заголовок 1 / Заголовок 2  и  Заголовок 3 / Заголовок 4 -->
+        <div class="headers-row">
+            <div class="headers-col">
+                <h3>#### Заголовок 1</h3>
+                <p>Заголовок 2</p>
+            </div>
+            <div class="headers-col">
+                <h3>#### Заголовок 3</h3>
+                <p>Заголовок 4</p>
+            </div>
+        </div>
+
+        <!-- Вопросы из вашего скриншота (полностью сохранённый текст) -->
+        <div class="questions-section">
+            <div class="question-block">
+                <div class="question-label">Вопрос:</div>
+                <div class="answer-text">
+                    Вопрос: Я имею есть несколько Объявлений "Правил", но нет общих правил/правил. Надо создать 6-8 объявлений сайта, которые в итоговом объявлении, если же не указать, Объявляет ли вы общие.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-label">Вопрос:</div>
+                <div class="answer-text">
+                    Как можно сделать объявления, так же как и другие объявления?
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-label">Вопрос:</div>
+                <div class="answer-text">
+                    Я хочу добавить объявление, чтобы оно было видимым для всех пользователей. Как это сделать?
+                </div>
+            </div>
+        </div>
+
+        <!-- -------- 6-8 объявлений (правил/объявлений), как просили -------- -->
+        <div class="announcements-title">📢 Объявления / Правила (8 шт.)</div>
+        <div class="announcements-grid">
+            <div class="announce-card">
+                <div class="announce-num">ОБЪЯВЛЕНИЕ №1</div>
+                <div class="announce-text">Общее правило: Уважайте других участников сообщества.</div>
+            </div>
+            <div class="announce-card">
+                <div class="announce-num">ОБЪЯВЛЕНИЕ №2</div>
+                <div class="announce-text">Запрещён спам и реклама без согласования.</div>
+            </div>
+            <div class="announce-card">
+                <div class="announce-num">ОБЪЯВЛЕНИЕ №3</div>
+                <div class="announce-text">Публикация контента только по тематике сайта.</div>
+            </div>
+            <div class="announce-card">
+                <div class="announce-num">ОБЪЯВЛЕНИЕ №4</div>
+                <div class="announce-text">Все пользователи видят объявления сразу после публикации.</div>
+            </div>
+            <div class="announce-card">
+                <div class="announce-num">ОБЪЯВЛЕНИЕ №5</div>
+                <div class="announce-text">Администратор имеет право редактировать правила.</div>
+            </div>
+            <div class="announce-card">
+                <div class="announce-num">ОБЪЯВЛЕНИЕ №6</div>
+                <div class="announce-text">За нарушения — предупреждение или блокировка.</div>
+            </div>
+            <div class="announce-card">
+                <div class="announce-num">ОБЪЯВЛЕНИЕ №7</div>
+                <div class="announce-text">Новые объявления появляются в ленте автоматически.</div>
+            </div>
+            <div class="announce-card">
+                <div class="announce-num">ОБЪЯВЛЕНИЕ №8</div>
+                <div class="announce-text">По вопросам сотрудничества — в поддержку.</div>
+            </div>
+        </div>
+
+        <!-- Дополнительная заметка, как добавить объявление для всех пользователей (ответ на последний вопрос) -->
+        <div class="note">
+            💡 <strong>Как добавить объявление, чтобы оно было видимым для всех пользователей?</strong><br>
+            Чтобы объявление видели все — просто разместите его в этом блоке "Объявления / Правила". Если вы хотите динамическое добавление (через форму), то нужен бэкенд или JavaScript с сохранением в localStorage. Но в рамках статичного HTML-сайта на GitHub Pages вы можете сами добавлять новые карточки в этот код — и они сразу будут видны всем.
+        </div>
+        <hr>
+        <div style="font-size: 13px; color: #5b6e8c; text-align: center; margin-top: 8px;">
+            Template.ru — Просмотр, верстка | Актуально на апрель 2023
+        </div>
+    </div>
+</body>
+</html>
