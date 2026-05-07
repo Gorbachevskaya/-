@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+                Привет, мир!
+            </div>
+
+            <div class="meta">
+                24.02.2013 | Автор: admin | Править
+            </div>
+
+            <div class="text">
+                Добро пожаловать в WordPress. Это ваша первая запись.
+                Отредактируйте или удалите её, затем пишите!
+            </div>
+
+            <div class="category">
+                Рубрика: Без рубрики | 1 комментарий »
+            </div>
+
+        </section>
+
+        <aside class="sidebar">
+
+            <div class="search widget">
+                <input type="text">
+                <button>Поиск</button>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Свежие записи</div>
+                <ul>
+                    <li>Привет, мир!</li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Свежие комментарии</div>
+                <ul>
+                    <li>Мистер WordPress к записи Привет, мир!</li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Архивы</div>
+                <ul>
+                    <li>Февраль 2013</li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Рубрики</div>
+                <ul>
+                    <li>Без рубрики</li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Мета</div>
+                <ul>
+                    <li>Управление сайтом</li>
+                    <li>Выйти</li>
+                    <li>RSS записей</li>
+                    <li>RSS комментариев</li>
+                    <li>WordPress.org</li>
+                </ul>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <footer>
+        tp.ru. All Rights Reserved.
+    </footer>
+
+</div>
+
+</body>
+</html>
